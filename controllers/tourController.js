@@ -13,6 +13,19 @@ exports.checkId = (req, res, next, val) => {
     next();
 }
 
+exports.checkBody = (req, res, next) => {
+    console.log(req.body);
+    if(req.body.hasOwnProperty('name')&&req.body.hasOwnProperty('price')){
+        
+    } else {
+        return res.status(400).json({
+            status: 'Bad Request',
+            message: 'Invalid request'
+        })
+    }
+    next()
+}
+
 exports.getAllTours = (req, res) => {
     res.status(200).json({
         status: 'success',
